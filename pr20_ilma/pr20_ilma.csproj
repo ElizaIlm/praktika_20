@@ -108,7 +108,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Items\Srudent.xaml">
+    <Page Include="Items\Student.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,8 +126,8 @@
     <Compile Include="Classes\GroupContext.cs" />
     <Compile Include="Classes\StudentContext.cs" />
     <Compile Include="Classes\WorkContext.cs" />
-    <Compile Include="Items\Srudent.xaml.cs">
-      <DependentUpon>Srudent.xaml</DependentUpon>
+    <Compile Include="Items\Student.xaml.cs">
+      <DependentUpon>Student.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

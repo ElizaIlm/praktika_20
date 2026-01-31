@@ -1,4 +1,6 @@
-﻿using System;
+﻿using pr20_ilma.Classes;
+using pr20_ilma.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,24 @@ using System.Windows.Shapes;
 namespace pr20_ilma.Items
 {
     /// <summary>
-    /// Логика взаимодействия для Srudent.xaml
+    /// Логика взаимодействия для Student.xaml
     /// </summary>
-    public partial class Srudent : UserControl
+    public partial class Student : UserControl
     {
-        public Srudent()
+        public StudentContext student;
+        public MainWindow main;
+       
+        public Student(StudentContext student, MainWindow main)
         {
             InitializeComponent();
+           
+            this.main = main;
+        }
+
+        public Student(StudentContext student, Main main1)
+        {
+            this.student = student;
+          
         }
     }
 }
