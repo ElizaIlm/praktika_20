@@ -59,7 +59,7 @@ namespace pr20_ilma.Pages
                 CreateStudents(AllStudents.FindAll(x => x.IdGroup == IdGroup));
             }
         }
-        private void SelectStudents(object sender, System.Windows.Input.KeyEventArgs e)
+        private void SelectStudents(object sender,KeyEventArgs e)
         {
             // Получаем всех студентов
             List<StudentContext> SearchStudent = AllStudents;

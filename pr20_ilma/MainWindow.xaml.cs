@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mysqlx.Cursor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace pr20_ilma
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow init;
         public MainWindow()
         {
             InitializeComponent();
+            init = this;
+            OpenPages(new Pages.Main());
+        }
+        public void OpenPages(Page page)
+        {
+            frame.Navigate(page);
         }
     }
 }
