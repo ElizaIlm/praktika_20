@@ -31,7 +31,7 @@ namespace pr20_ilma.Items
             // Активируем checkbox отчислен
             CBExpelled.IsChecked = student.Expelled;
             // Получаем дисциплины в которых участвует студент
-            List<DisciplineContext> StudentDisciplines = Main.AllDisciplines.FindAll(
+            List<DisciplineContext> StudentDisciplines = main.AllDisciplines.FindAll(
                 x => x.IdGroup == student.IdGroup);
             // Создаём переменные отвечающие за расчёты
             // Обязательных работ
@@ -47,7 +47,7 @@ namespace pr20_ilma.Items
             {
                 // Получаем кол-во работ принадлежащих к группе студента
                 // К обязательным работам относятся [теоретические тесты], [экзамены] и [практические работы]
-                List<WorkContext> StudentWorks = Main.AllWork.FindAll(x =>
+                List<WorkContext> StudentWorks = main.AllWorks.FindAll(x =>
                 (x.IdType == 1 || x.IdType == 2 || x.IdType == 3) &&
                 x.IdDiscipline == StudentDiscipline.Id);
                 // Увеличиваем кол-во обязательных работ
@@ -55,7 +55,7 @@ namespace pr20_ilma.Items
                 // Перебираем обязательные работы
                 foreach (WorkContext StudentWork in StudentWorks)
                 {
-                    EvaluationContext Evaluation = Main.AllEvaluation.Find(x =>
+                    EvaluationContext Evaluation = main.AllEvaluations.Find(x =>
                     x.IdWork == StudentWork.Id &&
                     x.IdStudent == student.Id);
                     // Проверяем если есть оценка за занятие и она не пустая, и не стоит оценка 2
@@ -64,7 +64,7 @@ namespace pr20_ilma.Items
                         DoneCount++;
                 }
                 // Получаем все занятия, кроме экзамена и оценки за месяц
-                StudentWorks = Main.AllWorks.FindAll(x =>
+                StudentWorks = main.AllWorks.FindAll(x =>
                     x.IdType != 4 && x.IdType != 3);
 
                 // Увеличиваем количество занятий
@@ -74,7 +74,7 @@ namespace pr20_ilma.Items
                 foreach (WorkContext StudentWork in StudentWorks)
                 {
                     // Получаем оценку к занятиям с пропусками
-                    EvaluationContext Evaluation = Main.AllEvaluation.Find(x =>
+                    EvaluationContext Evaluation = main.AllEvaluations.Find(x =>
                     x.IdWork == StudentWork.Id &&
                     x.IdStudent == student.Id);
 
@@ -87,11 +87,10 @@ namespace pr20_ilma.Items
                 }
 
                 // Выводим в процесс бар по формуле 100/(кол-во занятий)*выполненные
-                doneWorks.Value = (100f / (float)NecessarilyCount) * ((float)DoneCount);
+                doneWorkers.Value = (100f / (float)NecessarilyCount) * ((float)DoneCount);
 
                 // Выводим в процесс бар по формуле 100/(кол-во занятий * 90 (пара))*пропущенное кол-во минут
                 missedCount.Value = (100f / ((float)WorksCount * 90f)) * ((float)MissedCount);
-                TBGroup.Text = main.AllGroups.Find(x => x.Id == student.IdGroup).Name;
             }
         }
 

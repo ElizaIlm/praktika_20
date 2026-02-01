@@ -28,9 +28,6 @@ namespace pr20_ilma
             init = this;
             OpenPages(new Pages.Main());
         }
-        public void OpenPages(Page page)
-        {
-            frame.Navigate(page);
-        }
+        public void OpenPages(Page page) => frame.Navigate(page);
     }
 }

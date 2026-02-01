@@ -8,7 +8,7 @@ namespace pr20_ilma.Models
 {
     public class Group
     {
-        int Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public Group(int Id, string Name)
         {
